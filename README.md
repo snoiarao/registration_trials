@@ -3,10 +3,11 @@
 
 ### Directory Structure
 ##### - utils
-contains some 3d point cloud utility scripts that aided this project
+relevant 3d point cloud utility scripts that aided this project
 ##### - 3DSN
-
+code from 3D Smooth Net and scripts
 ##### - Sample Data
+2 sets of matching binary 6D point cloud data with keypoints and 3dSN features.
 
 ### Motivation
 ##### - Previous Work
