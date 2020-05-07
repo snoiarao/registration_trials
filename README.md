@@ -1,5 +1,5 @@
 # Registration Trials for THINC Lab Undergraduate research
-## Sonia Rao under supervision of (Dr. Prashant Doshi)[https://github.com/pdoshi-edu]
+## Sonia Rao under supervision of [Dr. Prashant Doshi](https://github.com/pdoshi-edu)
 
 ### Directory Structure
 ##### - utils
