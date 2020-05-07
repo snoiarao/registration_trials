@@ -34,7 +34,8 @@ THINC Lab is developing a novel LfD pipeline in which a robot will be able to pe
 Prior to early-fusion trials, I needed to collect two streams of kinect data with each stream adequately capturing a large amount of complex states and actions for the task at hand. Using the Robot Operating System (ROS) module for kinectv2, me and my colleague Farah collected over 50 GB of data to find the optimal kinect locations. 
 
 Examples:
-<img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin0.png" width="20%" height="20%"> <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin1.png" width="20%" height="20%">
+
+<img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin0.png" width="50%" height="50%"> <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin1.png" width="50%" height="50%">
 
 ##### Room Challenges
 Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. It is possible that the locations we chose will not be optimal for any other workspace.
