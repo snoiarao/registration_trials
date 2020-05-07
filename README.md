@@ -33,25 +33,32 @@ THINC Lab is developing a novel LfD pipeline in which a robot will be able to pe
 ### Kinect Setup
 Prior to early-fusion trials, I needed to collect two streams of kinect data with each stream adequately capturing a large amount of complex states and actions for the task at hand. Using the Robot Operating System (ROS) module for kinectv2, me and my colleague Farah collected over 50 GB of data to find the optimal kinect locations. 
 
-Examples:
+Examples of data collected:
 
 <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin0.png" width="50%" height="50%"> <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin1.png" width="50%" height="50%">
 
+The data were in .bag file format as per ROS requirements. Each bag file contained frames taken at 33 frames per second which is the hardware maximum. Each frame is in point_cloud format and has an RGB image component and an XYZ depth component. We initially had issues synchronizing the depth and image components for each frame; the kinects would record different amounts of data from each other, and would also record different quantities of image and depth components. To mitigate this issue, we made sure to start recording each stream from different computers, as a single computer did not have the bandwidth to record consistently across both streams. Secondly, we ensured that the frame rate was at its maximum so that the number of images and number of depth frames recorded were close to similar with minimal lag. Because less depth data ends up being recording, due to hardware and operating system limitations, we limit our dataset to depth frames and their corresponding image frames, and disregard all image frames that do not have a depth frame counterpart. As a rough approximation, a 1 minute RGB-D video recorded on both streams would yield about 20-30 image-depth pairs on EACH kinect that were adequately time and scene synchronized. 
+
+I remain unsure whether the synchronization process would be more seamless with different hardware, but we worked with roughly time-space-kinect synchronized data for the project duration. 
+
 ##### Room Challenges
-Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. It is possible that the locations we chose will not be optimal for any other workspace.
+Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. You can see the white space in the above examples is part of the pole, and is highly obstructive. It is possible that the locations we chose will not be optimal for any other workspace. 
 
 ##### 3DSN Considerations
 
 ##### Chosen locations
+
 
 ### Initial Trials
 ##### ICP and RANSAC
 [ICP](http://ais.informatik.uni-freiburg.de/teaching/ss12/robotics/slides/17-icp.pdf)
 
 ##### Deep Methods
+Because ICP and RANSAC did not produce very satisfactory results, we moved onto exploring novel deep learning methods. The advantage of deep learning based methods over traditional methods is that, usually, deep networks are able to leverage high dimensional features which can then be used for matching. There are several existing deep networks that convert RGB-D data into high dimensional features which can then be used with matching algorithms such as RANSAC. The primary obstacle to using these methods is that our data is not only unmatched, but both streams are on different coordinate planes. Thus, we need a deep learning algorithm that is able to firstly convert RGB-D data into high-dimensional features, and secondly register those features on the same coordinate system. From there, we can use those features as inputs to RANSAC for a more cohesive early-fused input to the revised SA-Net. 
 
 ### 3D Smooth Net Registration
 [The Perfect Match: 3D Point Cloud Matching with Smoothed Densities](http://openaccess.thecvf.com/content_CVPR_2019/papers/Gojcic_The_Perfect_Match_3D_Point_Cloud_Matching_With_Smoothed_Densities_CVPR_2019_paper.pdf)
+In late 2019, I came across this paper by researchers at ETH Zurich who were working on a similar issue: tackling data registration and RGB-D feature learning simultaneously. Check out the paper in the above link for details on their novel method known as 3dSmoothNet. For the remainder 
 
 
 ### Generating Key Points
