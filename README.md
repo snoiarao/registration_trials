@@ -26,7 +26,7 @@ After examining all three methods, we decided upon early fusion in the interest 
 ##### - New Task
 THINC Lab is developing a novel LfD pipeline in which a robot will be able to perform a pick and place task. Given a conveyor belt scattered with onion of varying quality, the robot will be able to decide the quality of each onion based on visual inspection, and then sort the onions into two bins for 'Good onions' and 'Bad onions' respectively. 
 
-![Good onion](goodo.jpg)
+<img src="https://github.com/snoiarao/registration_trials/blob/master/goodo.jpg" width="100" height="100">
 
 ![Bad onion](bado.jpg)
 
