@@ -12,6 +12,7 @@ code from 3D Smooth Net and scripts
 ### Motivation
 ##### - Previous Work
 [SA-Net: Deep Neural Network for Robot Trajectory Recognition from RGB-D Streams](https://arxiv.org/abs/1905.04380)
+
 State-Action (SA) detection is a vital step for Learning from Demonstration (LfD), the concept by which a robot is able to mimic a human learner without explicit programming. LfD consists of an initial network trained to recognize all states or actions of any relevant features located within a video, known as SA detection. Another network is created to draw insight about which states and actions correspond, and in which order. The composite process yields a network that is able to recognize behavior patterns which can then be transferred to a robotic agent. In a 2019 study, Sloan et al. developed a novel SA detection network as the first step to a larger LfD pipeline. This network is dubbed SA-Net, and is able to recognize simple SA pairs in a mapped grid environment. Although this model performed with high accuracy, situations with increased SA complexity and a greater number of input modalities poses a novel challenge for SA-Net. In late 2019, the project expanded to include 2 input streams instead of 1. Each stream is captured with a Kinectv2 which is a household RGBD camera originally developed by Microsoft for kinetic video gaming. This work explores different ways to combine these modalities as a pre-cursor to further SA-Net development. 
 
 ##### - Multi-modal Fusion
@@ -52,6 +53,7 @@ Unfortunately, the workspace we were in posed several physical limitations to da
 
 ### 3D Smooth Net Registration
 [The Perfect Match: 3D Point Cloud Matching with Smoothed Densities](http://openaccess.thecvf.com/content_CVPR_2019/papers/Gojcic_The_Perfect_Match_3D_Point_Cloud_Matching_With_Smoothed_Densities_CVPR_2019_paper.pdf)
+
 
 ### Generating Key Points
 ##### Algorithm
