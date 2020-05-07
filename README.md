@@ -22,13 +22,13 @@ Although fusion research has grown fairly recently with the rise of deep network
 After examining all three methods, we decided upon early fusion in the interest of modularity between input processing and network development. 
 
 <img src="https://github.com/snoiarao/registration_trials/blob/master/asc_0.png" width="50%" height="50%">
-<img src="https://github.com/snoiarao/registration_trials/blob/master/asc_1.png" width="50%" height="50%">
+<img src="https://github.com/snoiarao/registration_trials/blob/master/asc_1.png" width="30%" height="30%">
 
 ##### - New Task
 THINC Lab is developing a novel LfD pipeline in which a robot will be able to perform a pick and place task. Given a conveyor belt scattered with onion of varying quality, the robot will be able to decide the quality of each onion based on visual inspection, and then sort the onions into two bins for 'Good onions' and 'Bad onions' respectively. 
 
 <img src="https://github.com/snoiarao/registration_trials/blob/master/goodo.jpg" width="20%" height="20%"> <img src="https://github.com/snoiarao/registration_trials/blob/master/bado.jpg" width="20%" height="20%">
-<img src="https://github.com/snoiarao/registration_trials/blob/master/ambiguouso.jpg">
+<img src="https://github.com/snoiarao/registration_trials/blob/master/ambiguouso.jpg" width="50%" height="50%">
 
 ### Kinect Setup
 Prior to early-fusion trials, I needed to collect two streams of kinect data with each stream adequately capturing a large amount of complex states and actions for the task at hand. Using the Robot Operating System (ROS) module for kinectv2, me and my colleague Farah collected over 50 GB of data to find the optimal kinect locations. 
