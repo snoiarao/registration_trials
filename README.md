@@ -21,6 +21,8 @@ We seek to integrate both kinect streams such that future iterations of SA-Net c
 Although fusion research has grown fairly recently with the rise of deep networks, there are three commonly used techniques for multimodal fusion: early fusion, late fusion, and hybrid fusion. Early fusion is the process where multiple streams are combined into one cohesive input prior to any feature learning. Late Fusion is the process by which a network learns features of each input stream separately and independently, and later combines input stream features through matrix operations. Hybrid fusion is a combination of the two where input streams are partly combined prior to feature learning, and further refined after feature learning. 
 After examining all three methods, we decided upon early fusion in the interest of modularity between input processing and network development. 
 
+Below is an example of multi-stream fusion. Although each segment represents a different viewpoint, each viewpoint can be combined to contain a more complete view of the scene. 
+
 <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/asc_0.png" width="50%" height="50%">
 <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/asc_1.png" width="30%" height="30%">
 
@@ -41,7 +43,16 @@ The data were in .bag file format as per ROS requirements. Each bag file contain
 
 I remain unsure whether the synchronization process would be more seamless with different hardware, but we worked with roughly time-space-kinect synchronized data for the project duration. 
 
-##### Room Challenges
+##### task and room considerations
+To capture critical states, actions, and objects, our data collection must abide by the following:
+- all onions on the conveyor belt must be visible by one, both, or a combination of the two streams
+- the quality of all onions on the conveyor belt must be determinable by one, both, or a combination of the two streams
+- all ranges of the expert's hand must be visible by both streams
+- one stream must capture the expert's viewpoint when examining individual onions (hand raised to face)
+- the bins or bin region must be visible by one, both, or a combination of the two streams
+
+
+
 Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. You can see the white space in the above examples is part of the pole, and is highly obstructive. It is possible that the locations we chose will not be optimal for any other workspace. 
 
 ##### 3DSN Considerations
