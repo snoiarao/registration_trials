@@ -60,7 +60,9 @@ Because ICP and RANSAC did not produce very satisfactory results, we moved onto 
 [The Perfect Match: 3D Point Cloud Matching with Smoothed Densities](http://openaccess.thecvf.com/content_CVPR_2019/papers/Gojcic_The_Perfect_Match_3D_Point_Cloud_Matching_With_Smoothed_Densities_CVPR_2019_paper.pdf)
 In late 2019, I came across this paper by researchers at ETH Zurich who were working on a similar issue: tackling data registration and RGB-D feature learning simultaneously. Check out the paper in the above link for details on their novel method known as 3dSmoothNet. For the remainder of the project, my registration trials revolved around adapting and optimizing 3DSmoothNet for our data.
 
-Due to limited access to a GPU server, I set up 3DSmoothNet on a Google Cloud Platform compute engine instance with Nvidia P100 GPU and 4 CPU cores. 
+Due to limited access to a GPU server, I set up 3DSmoothNet on a Google Cloud Platform compute engine instance with Nvidia P100 GPU and 4 CPU cores. Every new user gets a large amount of free GPU credits which was sufficient for the project until I gained access to a regular GPU server. If you don't have GPU access, I recommend [GCP](https://cloud.google.com/compute/docs/gpus). 
+
+The general idea of 3DSmoothNet is that
 
 ### Generating Key Points
 ##### Algorithm
@@ -72,7 +74,7 @@ Due to limited access to a GPU server, I set up 3DSmoothNet on a Google Cloud Pl
 
 ##### Data Matching
 
-### Future Work
+#### Future Work
 
 ### Contact Information
 Sonia Rao
