@@ -85,6 +85,10 @@ manually selected common region using open3d. generated varying levels of random
 ##### Manual Selection
 - algorithm:
   user picks any number of points in each cloud that definitely correspond. rolling ball selects n nearest neighbors and adds index to keypoint list. parametrized
+  
+  <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp0.png">
+  <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp1.png">
+
 - levels
 anywhere from 20 keypoints to 15,000.
 - tradeoffs: 
