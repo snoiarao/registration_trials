@@ -62,7 +62,9 @@ In late 2019, I came across this paper by researchers at ETH Zurich who were wor
 
 Due to limited access to a GPU server, I set up 3DSmoothNet on a Google Cloud Platform compute engine instance with Nvidia P100 GPU and 4 CPU cores. Every new user gets a large amount of free GPU credits which was sufficient for the project until I gained access to a regular GPU server. If you don't have GPU access, I recommend [GCP](https://cloud.google.com/compute/docs/gpus). 
 
-The general idea of 3DSmoothNet is that
+The general idea of 3DSmoothNet is that 
+
+<img src="https://raw.githubusercontent.com/zgojcic/3DSmoothNet/master/figures/Network.jpg">
 
 ### Generating Key Points
 ##### Algorithm
