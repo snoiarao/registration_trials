@@ -51,7 +51,9 @@ To capture critical states, actions, and objects, our data collection must abide
 - one stream must capture the expert's viewpoint when examining individual onions (hand raised to face)
 - the bins or bin region must be visible by one, both, or a combination of the two streams
 
+To address the onion on the conveyor, we place one kinect anywhere between directly in front of the observer to 90 degrees either direction. To address the expert's viewpoint, we place the second camera at varying heights above the expert's left or right shoulder. Below is an example of the shoulder camera's perspective; the camera can see much of the conveyor belt and can also detect possible blemishes when the expert investigates an individual onion.
 
+![pers]()
 
 Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. You can see the white space in the above examples is part of the pole, and is highly obstructive. It is possible that the locations we chose will not be optimal for any other workspace. 
 
