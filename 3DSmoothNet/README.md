@@ -89,38 +89,11 @@ In order to compute the recall, first run the `correspondenceMatching.m` and the
 
 With small changes of the point cloud names and paths, the code can also be used to evaluate the performance on the ETH data set.
 
-## Demo
-
-We prepared a small demo which demonstrates the whole pipeline using two fragments from the 3DMatch dataset. To carry out the demo, please run 
-```
-python ./demo.py
-```
-after installing and compiling the necessary source code. It will compute the SDV voxel-grid for the input point clouds, before infering 32 dimensional 3DSmoothNet descriptors using the pretrained model. These descriptors are then used to estimate the rigid-body transformation parameters using RANSAC. Software outputs the results of RANSAC as well as two figures, first showing the inital state and the second the state after the 3DSmoothNet registration
-
-![3DSMoothNet](figures/demo.png?raw=true)
-
-## Data
-### Training data
-Training data created using the RGB-D data from 3DMatch data set can be downloaded from [here (145GB)](https://share.phys.ethz.ch/~gsg/3DSmoothNet/training_data/trainingData.rar).
-It consists of a `*.tfreford` file for each scene, due to the size of the data several scenes are split into more `*.tfreford` files (329 files all together). In order to train the model using this data replace the `sample_training_file.tfrecord` file in `./data/train/trainingData3DMatch/` with the files from this archive. When run in train mode the source code will automatically read all the files from the selected folder.  
- 
-If you use these data please consider also citing the authors of the data set [3DMatch](http://3dmatch.cs.princeton.edu/).
-
 ### Evaluation data sets
 ##### 3DMatch
 The pointclouds and indices of the interest points for the *3DMatch* data set can be downloaded from [here (0.27GB)](https://share.phys.ethz.ch/~gsg/3DSmoothNet/data/3DMatch.rar)
 
 If you use these data please consider also citing the authors of the data set [3DMatch](http://3dmatch.cs.princeton.edu/).
-
-##### 3DSparseMatch
-The pointclouds and indices of the interest points for the *3DSparseMatch* data set can be downloaded from [here (0.83GB)](https://share.phys.ethz.ch/~gsg/3DSmoothNet/data/3DSparseMatch.rar)
-
-If you use these data please consider also citing the authors of the original data set [3DMatch](http://3dmatch.cs.princeton.edu/).
-
-##### ETH
-The pointclouds and indices of the interest points for the *ETH* data set can be downloaded from [here (0.11GB)](https://share.phys.ethz.ch/~gsg/3DSmoothNet/data/ETH.rar)
-
-If you use these data please consider also citing the authors of the original data set [ETH](https://projects.asl.ethz.ch/datasets/doku.php?id=laserregistration:laserregistration).
 
 
 ### Pretrained model
@@ -129,10 +102,3 @@ The pretrained model of the 3DSmoothNet with 128 dim can be downloaded from [her
 
 To use this model please unpack the archive to `./models/128_dim/`. 
 
-
-## TO DO!!
-- Add source code of the descriptors used as baseline
-
-
-### License
-This code is released under the Simplified BSD License (refer to the LICENSE file for details).
