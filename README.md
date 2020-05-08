@@ -61,11 +61,6 @@ close-up of blemish:
 
 Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. You can see the white space in the above examples is part of the pole, and is highly obstructive. It is possible that the locations we chose will not be optimal for any other workspace. 
 
-##### 3DSN Considerations
-
-##### Chosen locations
-
-
 ### Initial Trials
 ##### ICP and RANSAC
 [ICP](http://ais.informatik.uni-freiburg.de/teaching/ss12/robotics/slides/17-icp.pdf)
@@ -84,14 +79,22 @@ The general idea of 3DSmoothNet is that
 <img src="https://raw.githubusercontent.com/zgojcic/3DSmoothNet/master/figures/Network.jpg">
 
 ### Generating Key Points
-##### Algorithm
+##### Random from Common
+manually selected common region using open3d. generated varying levels of random points from common region in either
 
-##### Levels
+##### Manual Selection
+- algorithm:
+  user picks any number of points in each cloud that definitely correspond. rolling ball selects n nearest neighbors and adds index to keypoint list. parametrized
+- levels
+anywhere from 20 keypoints to 15,000.
+- tradeoffs: 
 
 ### Generating Training Data
 ##### Translation Matrix Refinement
 
 ##### Data Matching
+
+### Results
 
 #### Future Work
 
