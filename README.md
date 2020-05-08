@@ -56,7 +56,7 @@ To capture critical states, actions, and objects, our data collection must abide
 - one stream must capture the expert's viewpoint when examining individual onions (hand raised to face)
 - the bins or bin region must be visible by one, both, or a combination of the two streams
 
-To address the onion on the conveyor, we place one kinect anywhere between directly in front of the observer to 90 degrees either direction. To address the expert's viewpoint, we place the second camera at varying heights above the expert's left or right shoulder. Below is an example of the shoulder camera's perspective; the camera can see much of the conveyor belt and can also detect possible blemishes when the expert investigates an individual onion.
+To address the onion on the conveyor, we place one kinect anywhere between directly in front of the observer to 90 degrees either direction. To address the expert's viewpoint, we place the second camera at varying heights above the expert's left or right shoulder. Below is an example of the shoulder camera's perspective with the image and depth frames overlaid; the camera can see much of the conveyor belt and can also detect possible blemishes when the expert investigates an individual onion closer to their face. 
 
 <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/exp0.png" width="50%" height="50%">
 
@@ -75,15 +75,41 @@ Because ICP and RANSAC did not produce very satisfactory results, we moved onto 
 
 ### 3D Smooth Net Registration
 [The Perfect Match: 3D Point Cloud Matching with Smoothed Densities](http://openaccess.thecvf.com/content_CVPR_2019/papers/Gojcic_The_Perfect_Match_3D_Point_Cloud_Matching_With_Smoothed_Densities_CVPR_2019_paper.pdf)
-In late 2019, I came across this paper by researchers at ETH Zurich who were working on a similar issue: tackling data registration and RGB-D feature learning simultaneously. Check out the paper in the above link for details on their novel method known as 3dSmoothNet. For the remainder of the project, my registration trials revolved around adapting and optimizing 3DSmoothNet for our data.
+In late 2019, I came across this paper by researchers at ETH Zurich who were working on a similar issue: tackling data registration and RGB-D feature learning simultaneously. Check out the 2019 CVPR paper in the above link for details on their novel method known as 3dSmoothNet. For the remainder of the project, my registration trials revolved around adapting and optimizing 3DSmoothNet for our data.
 
 Due to limited access to a GPU server, I set up 3DSmoothNet on a Google Cloud Platform compute engine instance with Nvidia P100 GPU and 4 CPU cores. Every new user gets a large amount of free GPU credits which was sufficient for the project until I gained access to a regular GPU server. If you don't have GPU access, I recommend [GCP](https://cloud.google.com/compute/docs/gpus). 
 
-The general idea of 3DSmoothNet is that 
+The general idea of 3DSmoothNet is that
 
 <img src="https://raw.githubusercontent.com/zgojcic/3DSmoothNet/master/figures/Network.jpg">
 
-### Generating Key Points
+
+Our process to use 3dSN pre-trained model:
+1. Collect two streams of RGB-D data that contain varying levels of commonality (anywhere from 20%-80%)
+2. Unpack .bag files using ROS
+3. Extract time-synchronized data between the two streams (at least 1 pair)
+4. Convert point cloud entities into binary point-clouds (default is ASCII)
+5. Generate Index files of Key points (see below section)
+6. Parametrize using 3dSN SDV 
+7. Perform inference via 3dSN pre-trained model
+8. Match using RANSAC on high-dim features
+9. Obtain translation matrix
+
+Our process to train on top of their pre-trained model:
+1. Collect and process data (same as above)
+2. Extract at least 30 pairs of time-synchronized pairs across a wide variety of expert motion
+3. Manually select key points (see below)
+4. Generate index files with keypoints and nearest neighbors
+5. Parametrize keypoints using 3DSN SDV
+6. Create mapping of keypoints using rough translation matrix
+7. Convert mapped parametrized inputs into .tfrecord format
+8. Train on top of 3dSN weights
+9. Match using RANSAC on inferred high-dim features
+10. Obtain refined translation matrix
+
+We will go into more detail below and in utils.
+
+### Generating Key Points and Index Files
 ##### Random from Common
 manually selected common region using open3d. generated varying levels of random points from common region in either
 
