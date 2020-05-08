@@ -1,0 +1,111 @@
+Determining if the Q_WS_WIN exist failed with the following output:
+Change Dir: /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_a3539/fast"
+/usr/bin/make -f CMakeFiles/cmTC_a3539.dir/build.make CMakeFiles/cmTC_a3539.dir/build
+make[1]: Entering directory '/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a3539.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -I/usr/include/qt4  -Wall -Wextra -Wno-unknown-pragmas -fno-strict-aliasing -Wno-format-extra-args -Wno-sign-compare -Wno-invalid-offsetof -Wno-conversion  -march=native -msse4.2 -mfpmath=sse -Wabi -pthread -fopenmp    -o CMakeFiles/cmTC_a3539.dir/CheckSymbolExists.cxx.o -c /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_WIN’ was not declared in this scope
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^~~~~~~~
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: note: suggested alternative: ‘Q_WS_X11’
+   return ((int*)(&Q_WS_WIN))[argc];
+                   ^~~~~~~~
+                   Q_WS_X11
+CMakeFiles/cmTC_a3539.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_a3539.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_a3539.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_a3539/fast' failed
+make: *** [cmTC_a3539/fast] Error 2
+
+File /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_WIN
+  return ((int*)(&Q_WS_WIN))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_QWS exist failed with the following output:
+Change Dir: /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_241ac/fast"
+/usr/bin/make -f CMakeFiles/cmTC_241ac.dir/build.make CMakeFiles/cmTC_241ac.dir/build
+make[1]: Entering directory '/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_241ac.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -I/usr/include/qt4  -Wall -Wextra -Wno-unknown-pragmas -fno-strict-aliasing -Wno-format-extra-args -Wno-sign-compare -Wno-invalid-offsetof -Wno-conversion  -march=native -msse4.2 -mfpmath=sse -Wabi -pthread -fopenmp    -o CMakeFiles/cmTC_241ac.dir/CheckSymbolExists.cxx.o -c /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_QWS’ was not declared in this scope
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^~~~~~~~
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: note: suggested alternative: ‘Q_WS_X11’
+   return ((int*)(&Q_WS_QWS))[argc];
+                   ^~~~~~~~
+                   Q_WS_X11
+CMakeFiles/cmTC_241ac.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_241ac.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_241ac.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_241ac/fast' failed
+make: *** [cmTC_241ac/fast] Error 2
+
+File /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_QWS
+  return ((int*)(&Q_WS_QWS))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the Q_WS_MAC exist failed with the following output:
+Change Dir: /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_503c0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_503c0.dir/build.make CMakeFiles/cmTC_503c0.dir/build
+make[1]: Entering directory '/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_503c0.dir/CheckSymbolExists.cxx.o
+/usr/bin/c++   -I/usr/include/qt4  -Wall -Wextra -Wno-unknown-pragmas -fno-strict-aliasing -Wno-format-extra-args -Wno-sign-compare -Wno-invalid-offsetof -Wno-conversion  -march=native -msse4.2 -mfpmath=sse -Wabi -pthread -fopenmp    -o CMakeFiles/cmTC_503c0.dir/CheckSymbolExists.cxx.o -c /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx: In function ‘int main(int, char**)’:
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: ‘Q_WS_MAC’ was not declared in this scope
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^~~~~~~~
+/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: note: suggested alternative: ‘Q_WS_X11’
+   return ((int*)(&Q_WS_MAC))[argc];
+                   ^~~~~~~~
+                   Q_WS_X11
+CMakeFiles/cmTC_503c0.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_503c0.dir/CheckSymbolExists.cxx.o' failed
+make[1]: *** [CMakeFiles/cmTC_503c0.dir/CheckSymbolExists.cxx.o] Error 1
+make[1]: Leaving directory '/home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_503c0/fast' failed
+make: *** [cmTC_503c0/fast] Error 2
+
+File /home/sonia/thinc/pcl-pcl-1.7.2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <QtCore/qglobal.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef Q_WS_MAC
+  return ((int*)(&Q_WS_MAC))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+

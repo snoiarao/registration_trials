@@ -1,0 +1,3 @@
+/home/sonia/thinc/3DSmoothNet/CMakeFiles/rebuild_cache.dir
+/home/sonia/thinc/3DSmoothNet/CMakeFiles/3DSmoothNet.dir
+/home/sonia/thinc/3DSmoothNet/CMakeFiles/edit_cache.dir

@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sonia/thinc/pcl-pcl-1.7.2/io/tools/pcd_convert_NaN_nan.cpp
+cstring
+-
+fstream
+-
+iostream
+-
+limits
+-
+sstream
+-
+string
+-
+
