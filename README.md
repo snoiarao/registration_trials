@@ -63,7 +63,7 @@ close-up of blemish:
 
 <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/exp1.png">
 
-Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. You can see the white space in the above examples is part of the pole, and is highly obstructive. It is possible that the locations we chose will not be optimal for any other workspace. 
+Unfortunately, the workspace we were in posed several physical limitations to data gathering. Primarily, there exists a large pole at the center of the room that obstructs direct view of the conveyor belt. You can see the white space in the above examples is part of the pole, and is highly obstructive. It is possible that the locations we chose will not be optimal for other workspaces. 
 
 ### Initial Trials
 ##### ICP and RANSAC
@@ -104,7 +104,7 @@ anywhere from 20 keypoints to 15,000.
 
 ### Results
 
-#### Future Work
+### Future Work
 
 ### Contact Information
 Sonia Rao
