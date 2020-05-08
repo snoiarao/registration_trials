@@ -27,8 +27,23 @@
 #### jpgs_to_vid.py
 - converts one of many directories with jpg, jpeg, or png images into .avi video and saves
 
-## DEPRECIATED
+#### crop_inliers.py
+
+#### demo.py
 
 #### draw_common.py
 
 #### crop_inliers.py
+
+#### gen_bash.py
+
+#### generate_key.py
+
+#### testing_pipeline.py
+
+#### test_params.sh
+
+#### transform.py
+
+#### TODO:
+- match_points.py
