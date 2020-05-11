@@ -10,7 +10,7 @@ code from 3D Smooth Net and scripts
 ##### - data
 2 sets of matching binary 6D point cloud data with varied # keypoints and 3dSN features and results
 ##### - requirements.txt
-- python package requirements to use utility functions and 3dSN
+python package requirements to use utility functions and 3dSN
 
 ### Motivation
 ##### - Previous Work
