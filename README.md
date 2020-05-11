@@ -7,7 +7,7 @@ relevant 3d point cloud utility scripts that aided this project
 ##### - 3DSN
 code from 3D Smooth Net and scripts
 ##### - Sample Data
-2 sets of matching binary 6D point cloud data with varied # keypoints and 3dSN features.
+2 sets of matching binary 6D point cloud data with varied # keypoints and 3dSN features and results
 
 ### Motivation
 ##### - Previous Work
@@ -79,10 +79,9 @@ In late 2019, I came across this paper by researchers at ETH Zurich who were wor
 
 Due to limited access to a GPU server, I set up 3DSmoothNet on a Google Cloud Platform compute engine instance with Nvidia P100 GPU and 4 CPU cores. Every new user gets a large amount of free GPU credits which was sufficient for the project until I gained access to a regular GPU server. If you don't have GPU access, I recommend [GCP](https://cloud.google.com/compute/docs/gpus). 
 
-The general idea of 3DSmoothNet is that
+The general idea of 3DSmoothNet is matching point clouds via fully convolutional layers and voxelized smoothed density value (SDV) representations. SDV grids are computed per interest point and aligned to a local reference frame (LRF) to achieve rotation invariance. This allows their approach to be sensor agnostic. The 3D point cloud descriptor achieves high accuracy on 3DMatch benchmark data set, outperforming the SOTA with only 32 output dimensions. This very low output dimension allows for near realtime correspondence. 3DSmoothNet trained only on RGB-D indoor scenes achieves 79.0% average recall on laser scans of outdoor vegetation, suggesting that 3dSN's model generalizes well to a wide variety of scenes. Because of this, I thought that 3dSN might be a good fit for our indoor workspace setting, and real-time registration preference. Ideally one pass through 3dSN will be sufficient to produce a translation matrix that would generalize to all frames in a video, but if that isn't the case, this method would be able to produce fast results per set. 
 
 <img src="https://raw.githubusercontent.com/zgojcic/3DSmoothNet/master/figures/Network.jpg">
-
 
 Our process to use 3dSN pre-trained model:
 1. Collect two streams of RGB-D data that contain varying levels of commonality (anywhere from 20%-80%)
