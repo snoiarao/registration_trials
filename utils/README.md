@@ -12,9 +12,6 @@
 #### visualize.py
 - view one or many point clouds, interest points, cropped polygons or box selected regions 
 
-#### transform.py
-- view one matrix or many transformation matrices applied on two point cloud streams for visual analysis of results
-
 #### generate_key.py
 - generates core key points, variable nearest neighbor keypoints for late registration and transformation
 
