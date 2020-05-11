@@ -120,26 +120,32 @@ We first explored generating key points from common sections within points. It w
 
 Because in this case we are only testing using 3dSN's pre-trained model, we are able to use randomly generated keypoints without any mapping function. 3dSN coupled with RANSAC is able to infer the rough correspondances of keypoints without explicit direction. While that's convenient, this method did not perform super well due to scalability issues. 
 
-Our individual point clouds contain over 1 million points. The cropped common region, with 80% similarity, contains anywhere from 500,000 points to 750,000 points. To randomly generate keypoints that have rough correspondences, we would need to generate a vast number of keypoints, likely over 50,000. It is impossible to parametrize and infer even a fraction of that, and so I moved on to manual selection. 
+Our individual point clouds contain over 1 million points. The cropped common region, with 80% similarity, contains anywhere from 500,000 points to 750,000 points. To randomly generate keypoints that have rough correspondences, we would need to generate a vast number of keypoints, likely over 50,000. It is impossible to parametrize and infer even a fraction of that. I tried repeating the process with downsampled clouds, but found that the results suffered. 
 
 
 ##### Manual Selection
+Because the keypoints are no longer selected randomly, there is no need to have a vast number of keypoints or an extensive common region. However, I find that having 60% common region was still preferred for our workspace settings. Because our workspace was small, having greater than 40% different regions usually meant that our kinects were angled significantly differently. It is challenging to infer correspondences between matching points if they are visually different. 
+Our process was as follows:
 
+1. collect data with >60% common region
+2. Use the point picker utility in utils to select key points, quantity of nearest neighbors
+3. Repeat for second cloud
+4. Turn points into index file
+5. feed into 3dSN
 
-- algorithm:
-  user picks any number of points in each cloud that definitely correspond. rolling ball selects n nearest neighbors and adds index to keypoint list. parametrized
+I experimented with over 15 levels of nearest neighbors ranging from 2 to 5,000. I find that there's a computational bottleneck with using over 500 nearest neighbors. Additionally with too many keypoints, the RANSAC matching performed poorly since several of the features showed the same points. Usually 50 to 100 nearest neighbors and ~20 keypoints per cloud are sufficient for parametrization and inference. 
   
   <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp0.png"  width="50%" height="50%">
   <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp1.png" width="50%" height="50%">
 
-- levels
-anywhere from 20 keypoints to 15,000.
-- tradeoffs: 
+
+Testing results using this method were satisactory. The planes visually look very aligned, and important objects (e.g. blemished onion) that were obscured in either cloud seem to be cohesively fused. However, it was still possible for us to obtain better results by training the model using our data. 
 
 ### Generating Training Data
 ##### Translation Matrix Refinement
+To update the 3dSN for our data, I needed to collect data and transfer it to .tfrecord format. After corresponding with the authors, I realized that to do so, I need to first generate keypoints for both clouds and second create an explicit mapping of each keypoint to its corresponding match in the other point cloud. The authors of 3dSN used the publically available [3dMatch](http://3dmatch.cs.princeton.edu/) dataset to develop their model and train their weights. This data has over 10,000 pairs of point cloud data and their corresponding ground truth. This poses a unique challenge. I do not have ground truth data, it would be impossible for us to collect ground truth data, and it would take a long time to collect, process, and generate keypoints for enough data to make a sizable difference to the pre-trained model. As such, I used a matrix refinement method to tune the pre-trained model, rather than shape it entirely to our data. 
 
-##### Data Matching
+
 
 ### Results
 
