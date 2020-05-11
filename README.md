@@ -81,6 +81,8 @@ Due to limited access to a GPU server, I set up 3DSmoothNet on a Google Cloud Pl
 
 The general idea of 3DSmoothNet is matching point clouds via fully convolutional layers and voxelized smoothed density value (SDV) representations. SDV grids are computed per interest point and aligned to a local reference frame (LRF) to achieve rotation invariance. This allows their approach to be sensor agnostic. The 3D point cloud descriptor achieves high accuracy on 3DMatch benchmark data set, outperforming the SOTA with only 32 output dimensions. This very low output dimension allows for near realtime correspondence. 3DSmoothNet trained only on RGB-D indoor scenes achieves 79.0% average recall on laser scans of outdoor vegetation, suggesting that 3dSN's model generalizes well to a wide variety of scenes. Because of this, I thought that 3dSN might be a good fit for our indoor workspace setting, and real-time registration preference. Ideally one pass through 3dSN will be sufficient to produce a translation matrix that would generalize to all frames in a video, but if that isn't the case, this method would be able to produce fast results per set. 
 
+below is a diagram of the 3dSN architecture. For training, the keypoints necessarily need to correspond with a known mapping.  
+
 <img src="https://raw.githubusercontent.com/zgojcic/3DSmoothNet/master/figures/Network.jpg">
 
 Our process to use 3dSN pre-trained model:
@@ -133,6 +135,8 @@ Our process was as follows:
 5. feed into 3dSN
 
 I experimented with over 15 levels of nearest neighbors ranging from 2 to 5,000. I find that there's a computational bottleneck with using over 500 nearest neighbors. Additionally with too many keypoints, the RANSAC matching performed poorly since several of the features showed the same points. Usually 50 to 200 nearest neighbors and ~20 keypoints per cloud are sufficient for parametrization and inference. 
+
+Below images show chosen keypoints. Each keypoint was present in both clouds without much visual difference. Additionally, the sphere around each point can be thought of as a "neighborhood" of nearest neighbor points that are using in the testing pipeline. 
   
   <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp0.png"  width="50%" height="50%">
   <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp1.png" width="50%" height="50%">
