@@ -133,7 +133,7 @@ Our process was as follows:
 4. Turn points into index file
 5. feed into 3dSN
 
-I experimented with over 15 levels of nearest neighbors ranging from 2 to 5,000. I find that there's a computational bottleneck with using over 500 nearest neighbors. Additionally with too many keypoints, the RANSAC matching performed poorly since several of the features showed the same points. Usually 50 to 100 nearest neighbors and ~20 keypoints per cloud are sufficient for parametrization and inference. 
+I experimented with over 15 levels of nearest neighbors ranging from 2 to 5,000. I find that there's a computational bottleneck with using over 500 nearest neighbors. Additionally with too many keypoints, the RANSAC matching performed poorly since several of the features showed the same points. Usually 50 to 200 nearest neighbors and ~20 keypoints per cloud are sufficient for parametrization and inference. 
   
   <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp0.png"  width="50%" height="50%">
   <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kp1.png" width="50%" height="50%">
@@ -145,11 +145,18 @@ Testing results using this method were satisactory. The planes visually look ver
 ##### Translation Matrix Refinement
 To update the 3dSN for our data, I needed to collect data and transfer it to .tfrecord format. After corresponding with the authors, I realized that to do so, I need to first generate keypoints for both clouds and second create an explicit mapping of each keypoint to its corresponding match in the other point cloud. The authors of 3dSN used the publically available [3dMatch](http://3dmatch.cs.princeton.edu/) dataset to develop their model and train their weights. This data has over 10,000 pairs of point cloud data and their corresponding ground truth. This poses a unique challenge. I do not have ground truth data, it would be impossible for us to collect ground truth data, and it would take a long time to collect, process, and generate keypoints for enough data to make a sizable difference to the pre-trained model. As such, I used a matrix refinement method to tune the pre-trained model, rather than shape it entirely to our data. 
 
+I started by generating 20 keypoints with 120 nearest neighbors for around 15 corresponding pairs of point clouds. I fed it into 3dSN without modification and obtained a rough translation matrix. The rough matrix can essentially be used to generate mapping of one point cloud to the other. Using the original 20 keypoints with ZERO nearest neighbors, I used the keypoint matching utility to overlay the clouds on the same plane and determine matching points. I then parametrized the points using 3dSN, converted the features into tfrecord using the mapping, and fed it into 3dSN for training. 
 
+I find that training with 20 to 50 keypoints did not significantly alter the visual results, and that using the pre-trained 32-dimensional model is generally sufficient for this task. 
 
-### Results
+### Results and Future Work
+Without ground truth, it's difficult to visually determine the registration accuracy. The data folder includes a .ply file with the most recent registration trial on the same plane. Unfortunately, the onset of COVID shelter-in-place measures stopped me from collecting new data, which I assumed would be part of the project. I began training trials with about 20 pairs of matched data to explore processing techniques. I assumed that I would be able to collect and process more data for training once I had a better idea of what training and evaluation would entail. As such, I never collected more data and it is possible that training on more data would significantly improve results. 
 
-### Future Work
+Future work includes:
+- Collecting more data showing different state-action pairs
+- Using another set of data to test trained model
+- Creating a driver program to automatically time-synchronize data from RGB-D video, register data into one plane, and create a new RGB-D video
+- Test 3d Object detection methods on registered RGB-D set
 
 ### Contact Information
 Sonia Rao
