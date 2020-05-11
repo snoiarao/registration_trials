@@ -111,9 +111,21 @@ We will go into more detail below and in utils.
 
 ### Generating Key Points and Index Files
 ##### Random from Common
-manually selected common region using open3d. generated varying levels of random points from common region in either
+We first explored generating key points from common sections within points. It was unclear from the 3DSN paper what percentage of either point cloud should correspond, and as such we tried varying levels of keypoints, common regions, and data. I found that having around 80% of common regions between the point clouds yielded optimal keypoints. Our process was as such:
+1. Collect data with 80% common region
+2. Overlay point clouds and extract common region from each
+3. Crop common region of point clouds into two new separate clouds
+4. Generate N random points from each cloud
+5. Feed into 3dSN 
+
+Because in this case we are only testing using 3dSN's pre-trained model, we are able to use randomly generated keypoints without any mapping function. 3dSN coupled with RANSAC is able to infer the rough correspondances of keypoints without explicit direction. While that's convenient, this method did not perform super well due to scalability issues. 
+
+Our individual point clouds contain over 1 million points. The cropped common region, with 80% similarity, contains anywhere from 500,000 points to 750,000 points. To randomly generate keypoints that have rough correspondences, we would need to generate a vast number of keypoints, likely over 50,000. It is impossible to parametrize and infer even a fraction of that, and so I moved on to manual selection. 
+
 
 ##### Manual Selection
+
+
 - algorithm:
   user picks any number of points in each cloud that definitely correspond. rolling ball selects n nearest neighbors and adds index to keypoint list. parametrized
   
