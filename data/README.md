@@ -7,6 +7,7 @@
 - k1 = Kinect X, k2 = Kinect Y
 
 ### ply_files
+- *NOTE* all .ply files must be in binary format NOT ASCII to work with 3dSN parametrization (convert via ROS, Cloudcompare. or O3D)
 - contains polygon format point clouds corresponding to original data, manually selected core points, and a variety of nearest neighbor point clouds
 - core = core points used to generate nearest neighbors
 - integer after ROS timestamp = number of NN
