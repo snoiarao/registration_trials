@@ -1,4 +1,4 @@
-# open3d utility functions
+# registration utility functions
 ### specifically for dual-perspective kinect streams in 6D PointCloud format, developed for internal lab use as preprocessing for real-time 3d registration
 
 #### requirements:
@@ -56,5 +56,8 @@
 
 #### synch_time.py
 - synchronizes ROS unpacked PCD's and saves pairs into output directory 
+
+#### export.launch
+- allows ROS to unpack bag files to specified directory. Exports in .pcd format, o3d can be used to convert into polygon format
 
 #### TODO:
