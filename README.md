@@ -1,5 +1,6 @@
 # Registration Trials for [THINC Lab](http://thinc.cs.uga.edu/) Undergraduate research
 ## Sonia Rao under supervision of [Dr. Prashant Doshi](https://github.com/pdoshi-edu)
+Work was presented at [UGA CURO 2020 Symposium](https://curo.uga.edu/)
 
 ### Directory Structure
 ##### - utils
