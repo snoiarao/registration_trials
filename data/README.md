@@ -1,12 +1,15 @@
 # Sample data folder
 
 ## contents
-#### bX_1574105370.ply
-- sample point cloud for Kinect X collected at ROS time 1574105370.
-- PCD originally unpacked with ROS, changed to binary polygon format using CloudCompare
 
-#### bY_1574105370.ply
-- sample point cloud for Kinect Y collected at ROS time 1574105370.
-- PCD originally unpacked with ROS, changed to binary polygon format using CloudCompare
+### vids
+- sample videos of streams used for experimentation
 
-##### will add SDV and results
+### ply_files
+- contains polygon format point clouds corresponding to original data, manually selected core points, and a variety of nearest neighbor point clouds
+
+### keypoints
+- index files used for for testing and obtaining rough translation matrices. Used to generate neighborhood ply files in ply_files/
+
+### results
+- translation matrices in numpy format
