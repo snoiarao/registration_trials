@@ -25,7 +25,7 @@
 - converts one or many files to numpy array and saves
 
 #### jpgs_to_vid.py
-- converts one of many directories with jpg, jpeg, or png images into .avi video and saves
+- converts one or many directories with jpg, jpeg, or png images into .avi video and saves
 
 #### crop_inliers.py
 - allows user to crop superfluous regions. Our workspace had lots of noise, so I used this utility to remove irrelevant workspace for training and testing
