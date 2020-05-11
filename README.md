@@ -7,8 +7,10 @@ Work was presented at [UGA CURO 2020 Symposium](https://curo.uga.edu/)
 relevant 3d point cloud utility scripts that aided this project
 ##### - 3DSN
 code from 3D Smooth Net and scripts
-##### - Sample Data
+##### - data
 2 sets of matching binary 6D point cloud data with varied # keypoints and 3dSN features and results
+##### - requirements.txt
+- python package requirements to use utility functions and 3dSN
 
 ### Motivation
 ##### - Previous Work
