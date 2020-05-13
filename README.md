@@ -167,6 +167,10 @@ Future work includes:
 - Creating a driver program to automatically time-synchronize data from RGB-D video, register data into one plane, and create a new RGB-D video
 - Test 3d Object detection methods on registered RGB-D set
 
+##### TODO
+- ROS utility section
+- link for public .bag files
+
 ### Contact Information
 Sonia Rao
 soniahrao@gmail.com
