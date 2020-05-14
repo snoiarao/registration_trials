@@ -42,15 +42,17 @@ THINC Lab is developing a novel LfD pipeline in which a robot will be able to pe
 
 
 ### Kinect Setup
-Prior to early-fusion trials, I needed to collect two streams of kinect data with each stream adequately capturing a large amount of complex states and actions for the task at hand. Using the Robot Operating System (ROS) module for kinectv2, me and my colleague Farah collected over 50 GB of data to find the optimal kinect locations. 
+Prior to early-fusion trials, I needed to collect two streams of kinect data with each stream adequately capturing a large amount of complex states and actions for the task at hand. Using the Robot Operating System (ROS) module for kinectv2, me and my colleague Farah collected over 50 GB of data to find the optimal kinect locations. We placed one kinect where all motions of the expert, relevant scene objects, and actions could be clearly scene. This included: directly in front of the expert and conveyor, to either side of the expert, and angled above the expert. The second kinect necessarily had to capture the expert's viewpoint. This is because the pipeine will eventually learn to make decisions that mimic the expert. If the expert sees a blemish upon closer inspection of an object, and thus places it in the proper bin, the model will need to know what visual trigger caused the expert to take this action. As such, we experimented with camera angles behind and above the expert so that the expert's hand holding the onion is visible with as much conveyor belt shown as possible. 
 
 Examples of data collected:
 
 <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin0.png" width="50%" height="50%"> <img src="https://github.com/snoiarao/registration_trials/blob/master/imgs/kin1.png" width="50%" height="50%">
 
-The data were in .bag file format as per ROS requirements. Each bag file contained frames taken at 33 frames per second which is the hardware maximum. Each frame is in point_cloud format and has an RGB image component and an XYZ depth component. We initially had issues synchronizing the depth and image components for each frame; the kinects would record different amounts of data from each other, and would also record different quantities of image and depth components. To mitigate this issue, we made sure to start recording each stream from different computers, as a single computer did not have the bandwidth to record consistently across both streams. Secondly, we ensured that the frame rate was at its maximum so that the number of images and number of depth frames recorded were close to similar with minimal lag. Because less depth data ends up being recording, due to hardware and operating system limitations, we limit our dataset to depth frames and their corresponding image frames, and disregard all image frames that do not have a depth frame counterpart. As a rough approximation, a 1 minute RGB-D video recorded on both streams would yield about 20-30 image-depth pairs on EACH kinect that were adequately time and scene synchronized. 
-
+The data were in .bag file format as per ROS requirements. Each frame is in point_cloud format and has an RGB image component and an XYZ depth component.
 I remain unsure whether the synchronization process would be more seamless with different hardware, but we worked with roughly time-space-kinect synchronized data for the project duration. 
+
+##### ROS Setup
+Because of our workspace constraints, we only had the bandwidth to connect each kinect to a single computer, rather than connecting both kinects to one computer. We first tried to connect the computers over the network such that we could start both streams at the same time. Howeverm this resulted in vastly different amounts of data recorded, as our computer could not handle the influx of data. When we started it from different computers, a smaller time lag persisted. The streams would begin at different times, have slightly different frame timestamps, and most bizzarely would have inconsistencies between the depth and RGB frame timestamps. That is, for each RGB-D frame in either kinect, the depth component was recorded at 0.75x the speed of RGB component, likely because point cloud data is more resource intensive. To mitigate this, we had to make sure the hardware was being commanded properly. We ensured that the frame rate was at its maximum so that the number of images and number of depth frames recorded were close to similar with minimal lag. Because less depth data ends up being recording, due to hardware and operating system limitations, we limit our dataset to depth frames and their corresponding image frames, and disregard all image frames that do not have a depth frame counterpart. We matched the frames using a time synchronizing utility. As a rough approximation, a 1 minute RGB-D video recorded on both streams would yield about 20-30 image-depth pairs on EACH kinect that were adequately time and scene synchronized. 
 
 ##### task and room considerations
 To capture critical states, actions, and objects, our data collection must abide by the following:
@@ -168,7 +170,6 @@ Future work includes:
 - Test 3d Object detection methods on registered RGB-D set
 
 ##### TODO
-- ROS utility section
 - link for public .bag files
 
 ### Contact Information
